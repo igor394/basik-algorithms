@@ -42,7 +42,7 @@ console.log(binaryAlgorithm(arr2, 8),  counter2);
 
 // O(1/2n**)-->O(n**) selection search
 let counter3 = 0;
-const arr3 = [2,3,6,9,8,3,2,1,5,10,11,7,4,12,-5,-8,-9,16,99,-2,1,5,-7,6,7,9,11,2];
+const arr3 = [2,3,6,9,8,3,2,1,5,10,11,7,4,12,-5,-8,-9,16,33,99,-2,1,5,-7,6,7,9,11,2];
 
 const selectSortSearch= array =>{
     for(let i=0;i<array.length;i++){
@@ -78,3 +78,27 @@ const bubbleSortSearch= array =>{
     return array;
 }
 console.log(bubbleSortSearch(arr3),  counter4, arr3.length);
+
+// O(n*log2n) quick sort
+let counter5 = 0;
+const quickSortSearch = array=>{
+    if(array.length<=1){
+        return array;
+    }
+    let index = Math.floor(array.length/2);
+    let  elem = array[index];
+    let less =[];
+    let larger =[];
+    for (let i=0;i<array.length;i++){
+        counter5++;
+        if(i===index) continue;
+        if(array[i]<elem){
+            less.push(array[i])
+        } else {
+            larger.push(array[i])
+        }
+    }
+    return [...quickSortSearch(less),elem, ...quickSortSearch(larger)];
+}
+
+console.log(quickSortSearch(arr3),  counter5, arr3.length);
