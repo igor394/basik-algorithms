@@ -42,6 +42,7 @@ console.log(binaryAlgorithm(arr2, 8),  counter2);
 
 // O(1/2n**)-->O(n**) selection search
 let counter3 = 0;
+const arr3 = [2,3,6,9,8,3,2,1,5,10,11,7,4,12,-5,-8,-9,16,99,-2,1,5,-7,6,7,9,11,2];
 
 const selectSortSearch= array =>{
     for(let i=0;i<array.length;i++){
@@ -58,5 +59,22 @@ const selectSortSearch= array =>{
     }
     return array;
 }
-console.log(selectSortSearch(arr1),  counter3);
+console.log(selectSortSearch(arr3),  counter3);
 
+// O(n**) bubble sort search (less effective than 'selection', not have 1/2)
+let counter4 = 0;
+
+const bubbleSortSearch= array =>{
+    for(let i=0;i<array.length;i++){
+        for (let j=0;j<array.length;j++){
+            if(array[j+1]<array[j]){
+                let acc = array[i];
+                array[j] = array[j+1];
+                array[j+1] = acc;
+            }
+            counter4++;
+        }
+    }
+    return array;
+}
+console.log(bubbleSortSearch(arr3),  counter4, arr3.length);
