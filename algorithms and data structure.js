@@ -40,4 +40,23 @@ const binaryAlgorithm = (array, elem)=>{
 }
 console.log(binaryAlgorithm(arr2, 8),  counter2);
 
+// O(1/2n**)-->O(n**) selection search
+let counter3 = 0;
+
+const selectSortSearch= array =>{
+    for(let i=0;i<array.length;i++){
+        let minIndx = i;
+        for (let j=i+1;j<array.length;j++){
+            if(array[j]<array[minIndx]){
+                minIndx = j;
+            }
+            counter3++;
+        }
+        let acc = array[i];
+        array[i] = array[minIndx];
+        array[minIndx] = acc;
+    }
+    return array;
+}
+console.log(selectSortSearch(arr1),  counter3);
 
