@@ -10,10 +10,11 @@ const lineAlgorithm = (array, elem)=>{
     }
     return null;
 }
+console.log('O(n) line search');
 console.log(lineAlgorithm(arr1, 4),  counter1);
 
 //O(log2n) binary search
-const  arr2 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+const  arr2 = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
 let counter2 = 0;
 
 const binaryAlgorithm = (array, elem)=>{
@@ -38,9 +39,31 @@ const binaryAlgorithm = (array, elem)=>{
     }
     return positionElem;
 }
-console.log(binaryAlgorithm(arr2, 8),  counter2);
+console.log('O(log2n) binary search');
+console.log(binaryAlgorithm(arr2, 9),  counter2);
 
-// O(1/2n**)-->O(n**) selection search
+// O(log2n)  recurs binary search
+let counter2rec = 0;
+
+function recursBinaryAlgorithm(array, elem, start, end) {
+    let  middle = Math.floor((start+end)/2);
+    counter2rec++;
+        if(array[middle]===elem){
+            return  middle;
+        }
+        else if ( elem < array[middle]){
+          return  recursBinaryAlgorithm(array, elem, start, middle-1);
+
+        } else {
+           return  recursBinaryAlgorithm(array, elem, middle+1, end);
+        }
+}
+console.log('O(log2n)  recurs binary search');
+console.log(recursBinaryAlgorithm(arr2, 10, 0, arr2.length));
+console.log(counter2rec)
+
+
+// // O(1/2n**)-->O(n**) selection search
 let counter3 = 0;
 const arr3 = [2,3,6,9,8,3,2,1,5,10,11,7,4,12,-5,-8,-9,16,33,99,-2,1,5,-7,6,7,9,11,2];
 
@@ -59,7 +82,8 @@ const selectSortSearch= array =>{
     }
     return array;
 }
-console.log(selectSortSearch(arr3),  counter3);
+console.log('O(n**) selection search');
+console.log(selectSortSearch(arr3),  counter3, arr3.length);
 
 // O(n**) bubble sort search (less effective than 'selection', not have 1/2)
 let counter4 = 0;
@@ -77,6 +101,7 @@ const bubbleSortSearch= array =>{
     }
     return array;
 }
+console.log('O(n**) bubble sort search');
 console.log(bubbleSortSearch(arr3),  counter4, arr3.length);
 
 // O(n*log2n) quick sort
@@ -100,5 +125,5 @@ const quickSortSearch = array=>{
     }
     return [...quickSortSearch(less),elem, ...quickSortSearch(larger)];
 }
-
+console.log('O(n*log2n) quick sort');
 console.log(quickSortSearch(arr3),  counter5, arr3.length);
